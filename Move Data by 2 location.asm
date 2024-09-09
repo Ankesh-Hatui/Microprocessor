@@ -1,0 +1,39 @@
+;<Program title>
+
+jmp start
+
+;data
+
+;code
+start: nop
+LXI H,8260H
+MVI A,22H
+MOV M,A
+INX H
+MVI A,A5H
+MOV M,A
+INX H
+MVI A,B2H
+MOV M,A
+INX H
+MVI A,99H
+MOV M,A
+INX H
+MVI A,7FH
+MOV M,A
+LXI H,8266H
+MOV M,A
+DCX H
+MVI D,99H
+MOV M,D
+DCX H
+MVI D,B2H
+MOV M,D
+DCX H
+LXI H,8262H
+MVI D,37H
+MOV M,D
+INX H
+MVI D,A2H
+MOV M,D
+hlt
