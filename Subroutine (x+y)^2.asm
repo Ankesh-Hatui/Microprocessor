@@ -1,0 +1,58 @@
+;z=(x+y)^2
+;=x^2 + y^2 +2xy
+
+;<Program title>
+
+JMP START
+
+;data
+
+;code
+START: NOP
+
+;Start writing your code here
+LXI H,2050H
+MVI M,02H
+MOV A,M
+MOV B,A
+CALL MULT
+MOV A,B
+LXI H,2052H
+MOV M,A
+LXI H,2051H
+MVI M,03H
+MOV A,M
+MOV B,A
+CALL MULT
+MOV A,B
+LXI H,2053H
+MOV M,A
+LXI H,2050H
+MOV A,M
+MOV B,A
+LXI H,2051H
+MOV A,M
+CALL MULT
+MOV A,B
+ADD A
+MOV B,A
+LDA 2052H
+MOV C,A
+LDA 2053H
+MOV E,A
+SUB A
+ADD B
+ADD C
+ADD E
+HLT
+; Multiplication
+MULT:
+MOV C,A
+SUB A
+LOOP:
+ADD B
+DCR C
+JNZ LOOP
+MOV B,A
+RET
+
