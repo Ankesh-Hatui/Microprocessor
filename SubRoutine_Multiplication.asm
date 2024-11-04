@@ -1,0 +1,30 @@
+;<Program title>
+
+JMP START
+
+;data
+
+;code
+START: NOP
+
+;Start writing your code here
+LXI H,2050H
+MVI M,04H
+SUB A
+MOV A,M
+MOV B,A
+LXI H,2051H
+MVI M,03H
+MOV A,M
+CALL MULT
+MOV A,B
+HLT
+MULT:
+MOV C,A
+SUB A
+LOOP:
+ADD B
+DCR C
+JNZ LOOP
+MOV B,A
+RET
